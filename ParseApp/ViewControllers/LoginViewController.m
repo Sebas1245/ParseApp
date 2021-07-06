@@ -86,6 +86,19 @@
         // optional code for what happens after the alert controller has finished presenting
     }];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    PFUser *user = [PFUser currentUser];
+    if (user != nil) {
+        NSLog(@"Welcome back %@ 😀", user.username);
+
+        // TODO: Load Chat view controller and set as root view controller
+        //Perform segue from chatSegue to bring you to HomeTimeLine
+        [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
+
+    }
+
+}
 /*
 #pragma mark - Navigation
 
