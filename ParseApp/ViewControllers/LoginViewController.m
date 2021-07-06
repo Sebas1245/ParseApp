@@ -40,6 +40,7 @@
             NSLog(@"User registered successfully");
             
             // manually segue to logged in view
+            [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
         }
     }];
 }
@@ -54,7 +55,7 @@
            [self createAlert:@"User login failed! Please check your credentials or your internet connection."];
        } else {
            NSLog(@"User logged in successfully");
-           
+           [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
            // display view controller that needs to shown after successful login
        }
     }];
