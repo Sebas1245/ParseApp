@@ -29,6 +29,7 @@
     PFObject *chatMessage = [PFObject objectWithClassName:@"Message_FBU2021"];
     // Use the name of your outlet to get the text the user typed
     chatMessage[@"text"] = self.messageField.text;
+    chatMessage[@"user"] = PFUser.currentUser;
     // save the message
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (succeeded) {
@@ -46,7 +47,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ChatCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ChatCell"];
-    cell.messageLabel.text = self.messages[indexPath.row][@"text"];
+    PFObject *chatMessage = self.messages[indexPath.row];
+    cell.messageLabel.text = chatMessage[@"text"];
+    PFUser *user = chatMessage[@"user"];
+    if (user != nil) {
+        // User found! update username label with username
+        cell.usernameLabel.text = user.username;
+    } else {
+        // No user found, set default username
+        cell.usernameLabel.text = @"🤖";
+    }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -61,6 +71,7 @@
 //    [query whereKey:@"likesCount" greaterThan:@100];
 //    query.limit = 20;
     [query orderByDescending:@"createdAt"];
+    [query includeKey:@"user"];
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {

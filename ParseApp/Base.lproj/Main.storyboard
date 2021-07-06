@@ -92,29 +92,39 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="51" id="Oge-2v-MPB" customClass="ChatCell">
-                                        <rect key="frame" x="0.0" y="24.5" width="424" height="51"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="89" id="Oge-2v-MPB" customClass="ChatCell">
+                                        <rect key="frame" x="0.0" y="24.5" width="424" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Oge-2v-MPB" id="qCd-Rg-Kly">
-                                            <rect key="frame" x="0.0" y="0.0" width="424" height="51"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="424" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi my name is Sebas" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQC-IU-mZS">
-                                                    <rect key="frame" x="8" y="8" width="408" height="35"/>
+                                                    <rect key="frame" x="8" y="37" width="408" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUq-aI-wwQ">
+                                                    <rect key="frame" x="8" y="8" width="408" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="KUq-aI-wwQ" firstAttribute="top" secondItem="qCd-Rg-Kly" secondAttribute="top" constant="8" id="70G-1e-cBe"/>
                                                 <constraint firstItem="QQC-IU-mZS" firstAttribute="leading" secondItem="qCd-Rg-Kly" secondAttribute="leading" constant="8" id="9f2-w0-UMx"/>
+                                                <constraint firstItem="KUq-aI-wwQ" firstAttribute="leading" secondItem="qCd-Rg-Kly" secondAttribute="leading" constant="8" id="bgq-85-f19"/>
                                                 <constraint firstAttribute="bottom" secondItem="QQC-IU-mZS" secondAttribute="bottom" constant="8" id="chs-H3-HGf"/>
+                                                <constraint firstAttribute="trailing" secondItem="KUq-aI-wwQ" secondAttribute="trailing" constant="8" id="dD5-f5-Q1U"/>
                                                 <constraint firstAttribute="trailing" secondItem="QQC-IU-mZS" secondAttribute="trailing" constant="8" id="eW1-PJ-RrD"/>
-                                                <constraint firstItem="QQC-IU-mZS" firstAttribute="top" secondItem="qCd-Rg-Kly" secondAttribute="top" constant="8" id="rS2-8E-yOP"/>
+                                                <constraint firstItem="QQC-IU-mZS" firstAttribute="top" secondItem="KUq-aI-wwQ" secondAttribute="bottom" constant="8" id="gIg-4t-6SD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageLabel" destination="QQC-IU-mZS" id="yPU-Jb-p30"/>
+                                            <outlet property="usernameLabel" destination="KUq-aI-wwQ" id="9l9-IY-6kI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
