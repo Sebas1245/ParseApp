@@ -99,14 +99,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="424" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi my name is Sebas" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQC-IU-mZS">
-                                                    <rect key="frame" x="36" y="15" width="158" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi my name is Sebas" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQC-IU-mZS">
+                                                    <rect key="frame" x="8" y="8" width="408" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="QQC-IU-mZS" firstAttribute="leading" secondItem="qCd-Rg-Kly" secondAttribute="leading" constant="8" id="9f2-w0-UMx"/>
+                                                <constraint firstAttribute="bottom" secondItem="QQC-IU-mZS" secondAttribute="bottom" constant="8" id="chs-H3-HGf"/>
+                                                <constraint firstAttribute="trailing" secondItem="QQC-IU-mZS" secondAttribute="trailing" constant="8" id="eW1-PJ-RrD"/>
+                                                <constraint firstItem="QQC-IU-mZS" firstAttribute="top" secondItem="qCd-Rg-Kly" secondAttribute="top" constant="8" id="rS2-8E-yOP"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageLabel" destination="QQC-IU-mZS" id="yPU-Jb-p30"/>
