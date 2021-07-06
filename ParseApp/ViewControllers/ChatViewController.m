@@ -7,10 +7,12 @@
 
 #import "ChatViewController.h"
 #import <Parse/Parse.h>
+#import "ChatCell.h"
 
-@interface ChatViewController ()
+@interface ChatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *messageField;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *messages;
 @end
 
 @implementation ChatViewController
@@ -18,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshMessages) userInfo:nil repeats:true];
+
 }
 - (IBAction)clickSend:(id)sender {
     PFObject *chatMessage = [PFObject objectWithClassName:@"Message_FBU2021"];
@@ -33,6 +39,42 @@
         }
     }];
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.messages.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ChatCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ChatCell"];
+    cell.messageLabel.text = self.messages[indexPath.row][@"text"];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
+    
+}
+
+-(void) refreshMessages {
+    // Fetch messages from Parse
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Message_FBU2021"];
+//    [query whereKey:@"likesCount" greaterThan:@100];
+//    query.limit = 20;
+    [query orderByDescending:@"createdAt"];
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            self.messages = posts;
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+
 
 /*
 #pragma mark - Navigation
