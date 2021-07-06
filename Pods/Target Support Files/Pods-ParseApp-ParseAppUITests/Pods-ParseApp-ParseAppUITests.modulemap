@@ -1,0 +1,6 @@
+framework module Pods_ParseApp_ParseAppUITests {
+  umbrella header "Pods-ParseApp-ParseAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
